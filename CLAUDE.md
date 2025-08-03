@@ -123,7 +123,11 @@ Uses Tailwind CSS v4 with custom configuration. The project includes:
    Run the tests and confirm they fail. Do not write any implementation code.
    b. If not in TDD mode then all test should pass.
 
-- Remember to check lint and typescript after adding new tests
+- Remember to format the testing code and check for correct lint and typescript after adding new tests.
+
+### Adding / Editing Playwright E2E Test
+
+When needing to edit or add new Playwright E2E Tests refer to @.claude/commands/create_e2e_tests.md
 
 ## Code Formatting
 
