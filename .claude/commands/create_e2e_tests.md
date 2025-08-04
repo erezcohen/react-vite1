@@ -140,4 +140,5 @@ When creating tests based on the provided arguments:
 - **Component Tests**: Test component states, props handling, and user interactions
 - **User Flow Tests**: Create comprehensive end-to-end scenarios that mirror real user behavior
 - Always include error handling and edge cases in your test scenarios
+- Provide clear failure messages and debugging info
 - Use meaningful test descriptions that explain the user perspective
