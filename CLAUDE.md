@@ -88,13 +88,14 @@ Uses Tailwind CSS v4 with custom configuration. The project includes:
 **Unit Tests**:
 
 - Vitest + React Testing Library for coponent testing
-- Unit Test files located in `__tests__/` directories next to source files
+- Unit Test files use `.test.ts` or `.test.tsx` suffix and are located in `__tests__/` directories next to source files
 - `src/test/setup.ts` - Global unit test configuration with jest-dom matchers
 - `src/test/test-utils.tsx` - Custom render function with providers (Router)
 
 **E2E Tests**:
 
 - Playwright for E2E testing
+- E2E test files use `.spec.ts` suffix and are located in the `tests/` directory
 
 **Adding / Editiing Component Unit Tests**:
 
