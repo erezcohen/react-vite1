@@ -43,10 +43,6 @@ This is a React + TypeScript + Vite starter template using shadcn/ui components 
 
 **Theme Management**: `ThemeContext.tsx` provides theme switching (light/dark/system) with localStorage persistence. Theme is applied by adding CSS classes to document root.
 
-### Configuration System
-
-**App Configuration**: `src/config/app.ts` - Contains app metadata (name, GitHub info, author) using environment variables with fallbacks.
-
 **Menu Configuration**: `src/config/menu.ts` - Defines navigation menu items with icons (from Lucide React), titles, and URLs. Menu supports nested items and external links.
 
 ### Component Architecture
@@ -56,6 +52,8 @@ This is a React + TypeScript + Vite starter template using shadcn/ui components 
 **Layout Components**: `app-header.tsx`, `app-footer.tsx`, `app-sidebar.tsx` provide application shell components.
 
 **Page Components**: Located in `src/pages/` - Feature pages that are routed to. Currently includes Dashboard and Sample pages.
+
+**Tables and Forms**: When adding new tables always use TanStack Table. When adding new forms always use TanStack Form.
 
 ### Styling System
 
@@ -89,19 +87,26 @@ Uses Tailwind CSS v4 with custom configuration. The project includes:
 
 ### Testing Architecture
 
-**Test Framework**: Uses Vitest for fast, Vite-powered testing with jsdom environment for React component testing.
+**Unit Tests**:
 
-**Test Organization**:
-
+- Vitest + React Testing Library for coponent testing
 - Unit Test files located in `__tests__/` directories next to source files
 - `src/test/setup.ts` - Global unit test configuration with jest-dom matchers
 - `src/test/test-utils.tsx` - Custom render function with providers (Router, Theme)
 
-**Testing Patterns**:
+**E2E Tests**:
 
-- Component unit tests focus on user interactions and rendering
-- Uses React Testing Library for DOM queries and user event simulation
-- Mock browser APIs (localStorage, matchMedia) for theme system testing
+- Playwright for E2E testing
+
+**Adding / Editiing Component Unit Tests**:
+
+When needing to edit or add new unit tests refer to @.claude/commands/create_unit_tests.md
+
+**Adding / Editing Playwright E2E Test**:
+
+When needing to edit or add new Playwright E2E Tests refer to @.claude/commands/create_e2e_tests.md
+
+Whenever adding new tests that require data from the backend to be mocked, use Mock Service Worker (mswjs.io).
 
 ### Adding New Pages
 
@@ -109,14 +114,55 @@ Uses Tailwind CSS v4 with custom configuration. The project includes:
 2. Add route in `Router.tsx`
 3. Add menu item in `src/config/menu.ts` if needed for navigation
 4. Create test file in `src/pages/__tests__/` for component testing
+5. If the components in the page require data to be fetched from the backend, use Mock Service Worker (mswjs.io) to return sample data.
 
-### Adding / Editiing Component Unit Tests
+## Code Style and Structure Guidelines
 
-When needing to edit or add new unit tests refer to @.claude/commands/create_unit_tests.md
+### TypeScript and React Best Practices
 
-### Adding / Editing Playwright E2E Test
+- Write concise, technical TypeScript code with accurate examples
+- Use functional and declarative programming patterns; avoid classes
+- Favor iteration and modularization over code duplication
+- Use descriptive variable names with auxiliary verbs (e.g., `isLoading`, `hasError`)
+- Structure files with exported components, subcomponents, helpers, static content, and types
+- Use lowercase with dashes for directory names (e.g., `components/auth-wizard`)
 
-When needing to edit or add new Playwright E2E Tests refer to @.claude/commands/create_e2e_tests.md
+### Error Handling and Validation
+
+- Prioritize error handling and edge cases:
+  - Use early returns for error conditions
+  - Implement guard clauses to handle preconditions and invalid states early
+  - Use custom error types for consistent error handling
+- Consider implementing Zod for schema validation when handling complex data structures
+
+### Performance and Optimization
+
+- Implement dynamic imports for code splitting and optimization
+- Use responsive design with a mobile-first approach
+- Optimize images: use WebP format, include size data, implement lazy loading
+- Follow performance optimization techniques to reduce load times and improve rendering efficiency
+
+### State Management Recommendations
+
+For applications requiring complex state management beyond React's built-in state, consider:
+
+- **Zustand** - Lightweight state management solution
+- **TanStack React Query** - Server state management and data fetching
+- Implement proper data fetching patterns with caching and error handling
+
+### Security and Best Practices
+
+- Implement proper error handling and user input validation
+- Follow secure coding practices for user data handling
+- Validate all external data sources and user inputs
+- Use TypeScript's strict mode for enhanced type safety
+
+### Documentation Standards
+
+- Provide clear and concise comments for complex logic
+- Use JSDoc comments for functions and components to improve IDE intellisense
+- Document component props and their expected types
+- Include usage examples for complex components
 
 ## Code Formatting
 
@@ -130,15 +176,36 @@ This project uses Prettier for code formatting integrated with ESLint. Prettier 
 
 You can customize these settings in `.prettierrc.json`.
 
-## The Development workflow should be:
+## Development Methodology
+
+### Approach
+
+1. **System 2 Thinking**: Approach problems with analytical rigor. Break down requirements into smaller, manageable parts and thoroughly consider each step before implementation.
+
+2. **Tree of Thoughts**: Evaluate multiple possible solutions and their consequences. Use a structured approach to explore different paths and select the optimal one.
+
+3. **Iterative Refinement**: Before finalizing code, consider improvements, edge cases, and optimizations. Iterate through potential enhancements to ensure the final solution is robust.
+
+### Development Process
+
+1. **Deep Dive Analysis**: Begin by conducting thorough analysis of the task, considering technical requirements and constraints.
+
+2. **Planning**: Develop a clear plan that outlines architectural structure and flow of the solution.
+
+3. **Implementation**: Implement the solution step-by-step, ensuring each part adheres to specified best practices.
+
+4. **Review and Optimize**: Perform code review, looking for areas of potential optimization and improvement.
+
+5. **Finalization**: Ensure code meets all requirements, is secure, and is performant.
+
+## The Development Workflow
 
 1. Make code changes according to the plan
-2. Run npm run format to format code with Prettier
-3. Run npm run lint to check code style (includes Prettier formatting check)
-4. Run npm run typecheck to verify TypeScript correctness
-5. Run npm run test:run and follow the following appropriate rule:
-   a. If in TDD mode (test-driven development mode) :
-   All test should pass except for the tests that were modified or added for the upcoming change.
-   b. If not in TDD mode then all test should pass.
-6. For E2E testing, run npm run test:e2e to ensure application works end-to-end
+2. Run `npm run format` to format code with Prettier
+3. Run `npm run lint` to check code style (includes Prettier formatting check)
+4. Run `npm run typecheck` to verify TypeScript correctness
+5. Run `npm run test:run` and follow the appropriate rule:
+   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
+   b. If not in TDD mode: All tests should pass.
+6. For E2E testing, run `npm run test:e2e` to ensure application works end-to-end
 7. Iterate on these steps as necessary.
