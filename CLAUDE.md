@@ -35,13 +35,11 @@ This is a React + TypeScript + Vite starter template using shadcn/ui components 
 
 ### Core Architecture
 
-**App Entry Point**: `App.tsx` sets up the theme provider and router wrapper using `BrowserRouter` for standard routing.
+**App Entry Point**: `App.tsx` sets up the router wrapper using `BrowserRouter` for standard routing.
 
 **Routing**: `Router.tsx` defines routes using React Router v7. All routes are wrapped in `AppLayout` component which provides header, footer, and main content area.
 
 **Layout System**: `AppLayout` component provides the main application shell with responsive design and proper content spacing.
-
-**Theme Management**: `ThemeContext.tsx` provides theme switching (light/dark/system) with localStorage persistence. Theme is applied by adding CSS classes to document root.
 
 **Menu Configuration**: `src/config/menu.ts` - Defines navigation menu items with icons (from Lucide React), titles, and URLs. Menu supports nested items and external links.
 
@@ -92,7 +90,7 @@ Uses Tailwind CSS v4 with custom configuration. The project includes:
 - Vitest + React Testing Library for coponent testing
 - Unit Test files located in `__tests__/` directories next to source files
 - `src/test/setup.ts` - Global unit test configuration with jest-dom matchers
-- `src/test/test-utils.tsx` - Custom render function with providers (Router, Theme)
+- `src/test/test-utils.tsx` - Custom render function with providers (Router)
 
 **E2E Tests**:
 
@@ -209,3 +207,30 @@ You can customize these settings in `.prettierrc.json`.
    b. If not in TDD mode: All tests should pass.
 6. For E2E testing, run `npm run test:e2e` to ensure application works end-to-end
 7. Iterate on these steps as necessary.
+
+## Business Logic
+
+Currently the application is mostly a basic sample project.
+However, over time the plan is to enhance it to be an app that control physical mobile devices.
+
+The devices are kept in several Data Centers (abbreviated as DC) in different locations in the world.
+
+### Capabilities of the APP:
+
+**1. DC management:**
+
+a. List (no need for filtering, assumed short list)
+
+b. Fields: Location, Type, IP range, description
+
+c. Operations: Add, Modify, Remove
+
+**2. Device management:**
+
+a. List, free search filter + language (model: galaxy…)
+
+b. Fields: ID, model, OS + version, status (connected/disconnected), DC
+
+c. Operations: details (view/change)
+
+d. Operations: connect/disconnect

@@ -20,6 +20,10 @@ export default defineConfig(({ mode }) => {
       setupFiles: ['./src/test/setup.ts'],
       globals: true,
       css: true,
+      include: [
+        '**/*.test.{js,ts,jsx,tsx}',
+        '**/__tests__/**/*.{js,ts,jsx,tsx}',
+      ],
     },
   };
 });
