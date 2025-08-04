@@ -1,24 +1,51 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch",
-      "Bash(ls:*)",
-      "Bash(npm run build)",
-      "Bash(npm run dev)",
-      "Bash(npm run lint:*)",
-      "Bash(npm run preview)",
-      "Bash(npm run typecheck)",
-      "Bash(git add:*)",
-      "Bash(mkdir:*)",
-      "Bash(npm test:*)",
-      "Bash(npm run test:*)",
-      "Bash(npm run format:*)",
-      "Bash(find:*)",
-      "mcp__context7__resolve-library-id",
+      "bash:afplay:*",
+      "bash:find:*",
+      "bash:git:add:*",
+      "bash:git:checkout:*",
+      "bash:git:pull:*",
+      "bash:ls:*",
+      "bash:mkdir:*",
+      "bash:npm:run:build",
+      "bash:npm:run:dev",
+      "bash:npm:run:format:*",
+      "bash:npm:run:lint:*",
+      "bash:npm:run:preview",
+      "bash:npm:run:test:*",
+      "bash:npm:run:typecheck",
+      "bash:npm:test:*",
       "mcp__context7__get-library-docs",
+      "mcp__context7__resolve-library-id",
       "mcp__figma__get_code",
-      "mcp__figma__get_image"
+      "mcp__figma__get_image",
+      "WebFetch"
     ],
     "deny": []
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Ping.aiff"
+          }
+        ]
+      }
+    ]
   }
 }
