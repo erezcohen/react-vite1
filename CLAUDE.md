@@ -110,20 +110,9 @@ Uses Tailwind CSS v4 with custom configuration. The project includes:
 3. Add menu item in `src/config/menu.ts` if needed for navigation
 4. Create test file in `src/pages/__tests__/` for component testing
 
-### Adding Component Unit Tests
+### Adding / Editiing Component Unit Tests
 
-1. Create `__tests__/` directory next to component
-2. Import test utilities: `import { render, screen } from '@/test/test-utils'`
-3. Use descriptive test names focused on user behavior
-4. Test accessibility, user interactions, and visual states.
-5. Tests should cover the happy path, edge cases, error handling etc.
-6. Implement tests according to the given mode:
-   a. If in TDD mode (test-driven development mode):
-   Avoids creating mock implementations for functionality or components that do not exist yet in the codebase.
-   Run the tests and confirm they fail. Do not write any implementation code.
-   b. If not in TDD mode then all test should pass.
-
-- Remember to format the testing code and check for correct lint and typescript after adding new tests.
+When needing to edit or add new unit tests refer to @.claude/commands/create_unit_tests.md
 
 ### Adding / Editing Playwright E2E Test
 
