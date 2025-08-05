@@ -43,7 +43,6 @@ import { ComponentName } from '../ComponentName';
 Always use the custom test utilities from `@/test/test-utils` which includes:
 
 - Router provider for components that use navigation
-- Theme provider for components that use theme context
 - Other global providers your app requires
 
 ### 4. Query Priority

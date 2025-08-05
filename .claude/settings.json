@@ -3,6 +3,8 @@
     "allow": [
       "Bash(afplay:*)",
       "Bash(find:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
       "Bash(git add:*)",
       "Bash(git checkout:*)",
       "Bash(git pull:*)",
