@@ -41,13 +41,14 @@ import { ComponentName } from '../ComponentName';
 ### 3. Test Utilities
 
 Always use the custom test utilities from `@/test/test-utils` which includes:
+
 - Router provider for components that use navigation
-- Theme provider for components that use theme context
 - Other global providers your app requires
 
 ### 4. Query Priority
 
 Use React Testing Library queries in this order of preference:
+
 1. `getByRole()` - Most accessible and user-focused
 2. `getByLabelText()` - Good for form elements
 3. `getByText()` - For content verification
@@ -90,32 +91,32 @@ describe('ComponentName', () => {
 
   it('renders correctly', () => {
     render(<ComponentName {...defaultProps} />);
-    
+
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('handles user interactions', async () => {
     const user = userEvent.setup();
     const mockOnClick = vi.fn();
-    
+
     render(<ComponentName {...defaultProps} onClick={mockOnClick} />);
-    
+
     await user.click(screen.getByRole('button'));
-    
+
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
 
   it('displays correct content', () => {
     const testContent = 'Test Content';
-    
+
     render(<ComponentName {...defaultProps} content={testContent} />);
-    
+
     expect(screen.getByText(testContent)).toBeInTheDocument();
   });
 
   it('handles error states', () => {
     render(<ComponentName {...defaultProps} error="Error message" />);
-    
+
     expect(screen.getByText('Error message')).toBeInTheDocument();
     expect(screen.getByRole('alert')).toBeInTheDocument();
   });
@@ -141,7 +142,7 @@ vi.mock('@/hooks/useData', () => ({
 describe('PageName Page', () => {
   it('renders page content', () => {
     render(<PageName />);
-    
+
     expect(screen.getByRole('main')).toBeInTheDocument();
     expect(screen.getByText('Page Title')).toBeInTheDocument();
   });
@@ -152,9 +153,9 @@ describe('PageName Page', () => {
       loading: true,
       error: null,
     });
-    
+
     render(<PageName />);
-    
+
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
@@ -164,23 +165,23 @@ describe('PageName Page', () => {
       loading: false,
       error: 'Failed to load data',
     });
-    
+
     render(<PageName />);
-    
+
     expect(screen.getByText('Failed to load data')).toBeInTheDocument();
   });
 
   it('displays data when loaded', () => {
     const mockData = { id: 1, name: 'Test Item' };
-    
+
     vi.mocked(useData).mockReturnValue({
       data: mockData,
       loading: false,
       error: null,
     });
-    
+
     render(<PageName />);
-    
+
     expect(screen.getByText('Test Item')).toBeInTheDocument();
   });
 });
@@ -200,30 +201,30 @@ describe('useCustomHook', () => {
 
   it('returns initial state', () => {
     const { result } = renderHook(() => useCustomHook());
-    
+
     expect(result.current.value).toBe(initialValue);
     expect(result.current.loading).toBe(false);
   });
 
   it('updates state correctly', () => {
     const { result } = renderHook(() => useCustomHook());
-    
+
     act(() => {
       result.current.setValue('new value');
     });
-    
+
     expect(result.current.value).toBe('new value');
   });
 
   it('handles async operations', async () => {
     const { result } = renderHook(() => useCustomHook());
-    
+
     act(() => {
       result.current.fetchData();
     });
-    
+
     expect(result.current.loading).toBe(true);
-    
+
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
     });
@@ -240,7 +241,7 @@ import { utilityFunction } from '../utilityFunction';
 describe('utilityFunction', () => {
   it('handles valid input', () => {
     const result = utilityFunction('valid input');
-    
+
     expect(result).toBe('expected output');
   });
 
@@ -257,7 +258,7 @@ describe('utilityFunction', () => {
   it('handles complex scenarios', () => {
     const complexInput = { prop1: 'value1', prop2: 'value2' };
     const result = utilityFunction(complexInput);
-    
+
     expect(result).toEqual({
       processedProp1: 'value1',
       processedProp2: 'value2',
@@ -307,15 +308,15 @@ vi.mock('react-router-dom', async () => ({
 ```typescript
 it('validates form input', async () => {
   const user = userEvent.setup();
-  
+
   render(<ContactForm />);
-  
+
   const emailInput = screen.getByLabelText('Email');
   const submitButton = screen.getByRole('button', { name: 'Submit' });
-  
+
   await user.type(emailInput, 'invalid-email');
   await user.click(submitButton);
-  
+
   expect(screen.getByText('Please enter a valid email')).toBeInTheDocument();
 });
 ```
@@ -329,7 +330,7 @@ it('applies correct theme styles', () => {
       <ThemeProvider theme="dark">{children}</ThemeProvider>
     ),
   });
-  
+
   expect(screen.getByTestId('themed-element')).toHaveClass('dark-theme');
 });
 ```
@@ -339,7 +340,7 @@ it('applies correct theme styles', () => {
 ```typescript
 it('has proper accessibility attributes', () => {
   render(<AccessibleComponent />);
-  
+
   const button = screen.getByRole('button');
   expect(button).toHaveAttribute('aria-label', 'Close dialog');
   expect(button).not.toHaveAttribute('aria-disabled');

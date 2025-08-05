@@ -1,21 +1,9 @@
 import { render, RenderOptions } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from '@/contexts/ThemeContext';
 import { ReactElement } from 'react';
+import { vi } from 'vitest';
 
-// Mock localStorage for theme provider
-const mockLocalStorage = {
-  getItem: vi.fn(() => null),
-  setItem: vi.fn(),
-  removeItem: vi.fn(),
-  clear: vi.fn(),
-};
-Object.defineProperty(window, 'localStorage', {
-  value: mockLocalStorage,
-  writable: true,
-});
-
-// Mock matchMedia for theme system
+// Mock matchMedia for mobile hook
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({
@@ -32,11 +20,7 @@ Object.defineProperty(window, 'matchMedia', {
 
 // eslint-disable-next-line react-refresh/only-export-components
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <BrowserRouter>
-      <ThemeProvider>{children}</ThemeProvider>
-    </BrowserRouter>
-  );
+  return <BrowserRouter>{children}</BrowserRouter>;
 };
 
 const customRender = (

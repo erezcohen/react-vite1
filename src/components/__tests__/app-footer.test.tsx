@@ -20,22 +20,6 @@ describe('AppFooter', () => {
     );
   });
 
-  test('contains mode toggle button for theme switching', () => {
-    render(<AppFooter />);
-
-    const themeToggle = screen.getByRole('button', { name: /toggle theme/i });
-    expect(themeToggle).toBeInTheDocument();
-  });
-
-  test('mode toggle is hidden on mobile and visible on desktop', () => {
-    render(<AppFooter />);
-
-    const toggleContainer = screen.getByRole('button', {
-      name: /toggle theme/i,
-    }).parentElement;
-    expect(toggleContainer).toHaveClass('hidden', 'md:block', 'md:ml-auto');
-  });
-
   test('has proper semantic footer structure', () => {
     render(<AppFooter />);
 

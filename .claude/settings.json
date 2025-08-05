@@ -1,21 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "bash:afplay:*",
-      "bash:find:*",
-      "bash:git:add:*",
-      "bash:git:checkout:*",
-      "bash:git:pull:*",
-      "bash:ls:*",
-      "bash:mkdir:*",
-      "bash:npm:run:build",
-      "bash:npm:run:dev",
-      "bash:npm:run:format:*",
-      "bash:npm:run:lint:*",
-      "bash:npm:run:preview",
-      "bash:npm:run:test:*",
-      "bash:npm:run:typecheck",
-      "bash:npm:test:*",
+      "Bash(afplay:*)",
+      "Bash(find:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(git add:*)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(npm run format:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run preview)",
+      "Bash(npm run test:run:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm test:*)",
       "mcp__context7__get-library-docs",
       "mcp__context7__resolve-library-id",
       "mcp__figma__get_code",
@@ -32,17 +34,6 @@
           {
             "type": "command",
             "command": "afplay /System/Library/Sounds/Glass.aiff"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Ping.aiff"
           }
         ]
       }
