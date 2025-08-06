@@ -42,16 +42,21 @@ test.describe('Sample Page', () => {
     await expect(cardTitle).toBeVisible();
   });
 
-  test('should be accessible via navigation', async ({ page }) => {
-    // Start from home page
-    await page.goto('/');
+  test('should have DCMS header with navigation', async ({ page }) => {
+    // Check for DCMS logo
+    await expect(page.getByText('DCMS')).toBeVisible();
 
-    // Click on the Sample Page navigation link in the header
-    await page.getByRole('link', { name: 'Sample Page' }).click();
-
-    // Verify we're on the correct page
+    // Check for navigation links
     await expect(
-      page.getByRole('heading', { name: 'Sample Page' })
+      page.getByRole('link', { name: 'Data Centers' })
+    ).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Devices' })).toBeVisible();
+
+    // Check for star icon button
+    await expect(
+      page.getByRole('button', {
+        name: 'user-button',
+      })
     ).toBeVisible();
   });
 

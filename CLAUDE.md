@@ -100,10 +100,12 @@ Uses Tailwind CSS v4 with custom configuration. The project includes:
 **Adding / Editiing Component Unit Tests**:
 
 When needing to edit or add new unit tests refer to @.claude/commands/create_unit_tests.md
+If you cannot find this command please abort and let me know.
 
 **Adding / Editing Playwright E2E Test**:
 
 When needing to edit or add new Playwright E2E Tests refer to @.claude/commands/create_e2e_tests.md
+If you cannot find this command please abort and let me know.
 
 Whenever adding new tests that require data from the backend to be mocked, use Mock Service Worker (mswjs.io).
 
@@ -206,15 +208,18 @@ You can customize these settings in `.prettierrc.json`.
 5. Run `npm run test:run` and follow the appropriate rule:
    a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
    b. If not in TDD mode: All tests should pass.
-6. For E2E testing, run `npm run test:e2e` to ensure application works end-to-end
+6. Run `npm run test:e2e` and follow the appropriate rule:
+   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
+   b. If not in TDD mode: All tests should pass.
 7. Iterate on these steps as necessary.
 
 ## Business Logic
 
 Currently the application is mostly a basic sample project.
-However, over time the plan is to enhance it to be an app that control physical mobile devices.
+However, over time the plan is to change it to be an app that control physical mobile devices.
 
 The devices are kept in several Data Centers (abbreviated as DC) in different locations in the world.
+The name of the app will be DCMS: Data Centers Management System.
 
 ### Capabilities of the APP:
 
@@ -222,7 +227,7 @@ The devices are kept in several Data Centers (abbreviated as DC) in different lo
 
 a. List (no need for filtering, assumed short list)
 
-b. Fields: Location, Type, IP range, description
+b. Fields: Location, Type (on-premise/cloud), IP range, description
 
 c. Operations: Add, Modify, Remove
 
@@ -232,6 +237,4 @@ a. List, free search filter + language (model: galaxy…)
 
 b. Fields: ID, model, OS + version, status (connected/disconnected), DC
 
-c. Operations: details (view/change)
-
-d. Operations: connect/disconnect
+c. Operations: details (view/change), connect/disconnect
