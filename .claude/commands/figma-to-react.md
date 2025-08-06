@@ -200,3 +200,17 @@ output_files:
 - "Playwright e2e test file (.spec.ts)"
 - "Component documentation (README.md or .mdx)"
 - "Updated test snapshots (if applicable)"
+
+## Design System and Asset Guidelines
+
+### Figma Design Integration
+
+When working with Figma designs, **ALWAYS** use the actual assets and specifications from Figma rather than creating custom approximations:
+
+- **Icons and SVG Assets**: Extract and use the actual SVG assets from Figma using `mcp__figma__get_code` tool
+- **Typography**: Use exact font specifications (Inter Bold, Medium, etc.) and sizing from Figma
+- **Colors**: Use precise hex color values from the design (`#0d0f1c`, `#565a6f`, etc.)
+- **Spacing and Layout**: Match exact padding, margins, and positioning values from Figma export
+- **Component Styling**: Replicate exact visual properties (rounded-full for circular buttons, etc.)
+
+**Never assume or approximate** - always verify against the actual Figma design and extract real assets when available. This ensures pixel-perfect implementation and maintains design consistency.

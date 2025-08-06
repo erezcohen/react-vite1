@@ -46,16 +46,21 @@ test.describe('Dashboard Page', () => {
     await expect(cardTitle).toBeVisible();
   });
 
-  test('should be accessible via navigation', async ({ page }) => {
-    // Start from sample page
-    await page.goto('/sample');
+  test('should have DCMS header with navigation', async ({ page }) => {
+    // Check for DCMS logo
+    await expect(page.getByText('DCMS')).toBeVisible();
 
-    // Click on the Dashboard navigation link in the header
-    await page.getByRole('link', { name: 'Dashboard' }).click();
-
-    // Verify we're on the correct page
+    // Check for navigation links
     await expect(
-      page.getByRole('heading', { name: 'Dashboard' })
+      page.getByRole('link', { name: 'Data Centers' })
+    ).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Devices' })).toBeVisible();
+
+    // Check for star icon button
+    await expect(
+      page.getByRole('button', {
+        name: 'user-button',
+      })
     ).toBeVisible();
   });
 
