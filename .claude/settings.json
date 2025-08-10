@@ -3,6 +3,8 @@
     "allow": [
       "Bash(afplay:*)",
       "Bash(find:*)",
+      "Bash(gh api:*)",
+      "Bash(gh issue view:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
       "Bash(git add:*)",
@@ -24,6 +26,8 @@
       "mcp__context7__resolve-library-id",
       "mcp__figma__get_code",
       "mcp__figma__get_image",
+      "mcp__upstash-context-7-mcp__get-library-docs",
+      "mcp__upstash-context-7-mcp__resolve-library-id",
       "WebFetch"
     ],
     "deny": []
