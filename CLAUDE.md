@@ -177,6 +177,10 @@ This project uses Prettier for code formatting integrated with ESLint. Prettier 
 
 You can customize these settings in `.prettierrc.json`.
 
+## Git Repository Information
+
+**Base Branch**: The main branch in this repository is named `master` (not `main`).
+
 ## Development Methodology
 
 ### Approach
