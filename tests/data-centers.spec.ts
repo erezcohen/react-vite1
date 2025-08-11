@@ -198,7 +198,7 @@ test.describe('Data Centers Page', () => {
     await expect(title).toHaveClass(/font-bold/);
 
     // Check table container styling
-    const tableContainer = page.locator('.bg-\\[\\#f7fafc\\]').first();
+    const tableContainer = page.locator('.bg-background.rounded-lg');
     await expect(tableContainer).toBeVisible();
     await expect(tableContainer).toHaveClass(/rounded-lg/);
     await expect(tableContainer).toHaveClass(/border-\[#cfd1e8\]/);

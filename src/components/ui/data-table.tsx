@@ -48,14 +48,14 @@ export function DataTable<TData>({
     return (
       <div
         className={cn(
-          'bg-[#f7fafc] rounded-lg border border-[#cfd1e8]',
+          'bg-background rounded-lg border border-[#cfd1e8]',
           className
         )}
       >
         <div className="overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-[#f7fafc]">
+              <tr className="bg-background">
                 {columns.map((_, index) => (
                   <th
                     key={index}
@@ -87,7 +87,7 @@ export function DataTable<TData>({
     return (
       <div
         className={cn(
-          'bg-[#f7fafc] rounded-lg border border-[#cfd1e8] p-8 text-center',
+          'bg-background rounded-lg border border-[#cfd1e8] p-8 text-center',
           className
         )}
       >
@@ -101,7 +101,7 @@ export function DataTable<TData>({
     return (
       <div
         className={cn(
-          'bg-[#f7fafc] rounded-lg border border-[#cfd1e8] p-8 text-center',
+          'bg-background rounded-lg border border-[#cfd1e8] p-8 text-center',
           className
         )}
       >
@@ -120,7 +120,7 @@ export function DataTable<TData>({
   return (
     <div
       className={cn(
-        'bg-[#f7fafc] rounded-lg border border-[#cfd1e8]',
+        'bg-background rounded-lg border border-[#cfd1e8]',
         className
       )}
     >
@@ -128,7 +128,7 @@ export function DataTable<TData>({
         <table className="w-full">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id} className="bg-[#f7fafc]">
+              <tr key={headerGroup.id} className="bg-background">
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
