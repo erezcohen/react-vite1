@@ -49,7 +49,7 @@ This is a React + TypeScript + Vite starter template using shadcn/ui components 
 
 **Layout Components**: `app-header.tsx`, `app-footer.tsx`, `app-sidebar.tsx` provide application shell components.
 
-**Page Components**: Located in `src/pages/` - Feature pages that are routed to. Currently includes Dashboard and Sample pages.
+**Page Components**: Located in `src/pages/` - Feature pages that are routed to. Currently includes Data Centers and Sample pages.
 
 **Tables and Forms**: When adding new tables always use TanStack Table. When adding new forms always use TanStack Form.
 
@@ -176,6 +176,10 @@ This project uses Prettier for code formatting integrated with ESLint. Prettier 
 - Add trailing commas for ES5 compatibility
 
 You can customize these settings in `.prettierrc.json`.
+
+## Git Repository Information
+
+**Base Branch**: The main branch in this repository is named `master` (not `main`).
 
 ## Development Methodology
 

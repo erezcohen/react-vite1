@@ -205,12 +205,17 @@ output_files:
 
 ### Figma Design Integration
 
-When working with Figma designs, **ALWAYS** use the actual assets and specifications from Figma rather than creating custom approximations:
+When working with Figma designs, **ALWAYS** copy the actual assets and specifications from Figma rather than creating custom approximations:
 
-- **Icons and SVG Assets**: Extract and use the actual SVG assets from Figma using `mcp__figma__get_code` tool
+- **Icons and SVG Assets**: Download and use the actual SVG assets from Figma using `mcp__figma__get_code` tool
 - **Typography**: Use exact font specifications (Inter Bold, Medium, etc.) and sizing from Figma
 - **Colors**: Use precise hex color values from the design (`#0d0f1c`, `#565a6f`, etc.)
 - **Spacing and Layout**: Match exact padding, margins, and positioning values from Figma export
 - **Component Styling**: Replicate exact visual properties (rounded-full for circular buttons, etc.)
 
 **Never assume or approximate** - always verify against the actual Figma design and extract real assets when available. This ensures pixel-perfect implementation and maintains design consistency.
+
+## Checking the UI and design implementation in the browser
+
+Assume that dev server is already running on http://localhost:5173/.
+Also, a chrome browser is already running and pointing to that address, with the BrowserTools MCP plugin working in it.
