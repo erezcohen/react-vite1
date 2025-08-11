@@ -49,7 +49,7 @@ This is a React + TypeScript + Vite starter template using shadcn/ui components 
 
 **Layout Components**: `app-header.tsx`, `app-footer.tsx`, `app-sidebar.tsx` provide application shell components.
 
-**Page Components**: Located in `src/pages/` - Feature pages that are routed to. Currently includes Dashboard and Sample pages.
+**Page Components**: Located in `src/pages/` - Feature pages that are routed to. Currently includes Data Centers and Sample pages.
 
 **Tables and Forms**: When adding new tables always use TanStack Table. When adding new forms always use TanStack Form.
 

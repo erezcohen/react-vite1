@@ -43,7 +43,7 @@ test.describe('Navigation', () => {
     page,
   }) => {
     // Test navigation from different starting points
-    const routes = ['/', '/dashboard', '/sample'];
+    const routes = ['/', '/sample'];
 
     for (const route of routes) {
       await page.goto(route);
