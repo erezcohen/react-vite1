@@ -2,7 +2,7 @@
 
 **Date:** August 6, 2025  
 **Issue:** GitHub Issue #5 - Add the Data Center Page  
-**Status:** Research Complete  
+**Status:** Research Complete
 
 ## Executive Summary
 
@@ -21,16 +21,19 @@ This document outlines the research and implementation plan for adding the Data 
 ### Current Codebase State
 
 **Routing Structure** (`src/Router.tsx`):
+
 - Current default route: Dashboard page
 - Menu already configured for `/data-centers` route
 - Uses React Router v7 with `AppLayout` wrapper
 
 **Navigation** (`src/config/menu.ts` & `src/components/app-header.tsx`):
-- Menu items: "Data Centers" and "Devices" 
+
+- Menu items: "Data Centers" and "Devices"
 - NavLink already supports active state styling
 - Logo component exists with DCMS branding
 
 **Technology Stack**:
+
 - React 19 + TypeScript
 - Vite build system
 - Tailwind CSS v4
@@ -44,21 +47,24 @@ This document outlines the research and implementation plan for adding the Data 
 The Figma design shows a complete Data Centers page with the following specifications:
 
 **Header Structure:**
+
 - Logo with triangle icon vectors and "DCMS" text (18px Inter Bold, #0d0f1c)
 - Navigation: "Data Centers" (active, Inter Bold, #0d0f1c) and "Devices" (Inter Medium, #565a6f)
 - Star icon button on the right (existing component)
 
 **Page Layout:**
+
 - Main container: `px-40 py-5` with max-width 960px centered
 - Page title: "Data Centers" (32px Inter Bold, #0d0f1c, 40px line-height)
 - Action button: "Add Data Center" with plus icon (Material 3 design, #625b71 background)
 
 **Table Design:**
+
 - **Background**: Light gray table container (#f7fafc) with rounded corners and border (#cfd1e8)
 - **Headers**: Inter Bold 14px, #0d0f1c color, light gray background (#f7fafc)
 - **Column Structure**:
   - Location: 223px width
-  - Type: 221px width  
+  - Type: 221px width
   - IP Range: 245px width
   - Description: 237px width
 - **Row Styling**:
@@ -69,8 +75,9 @@ The Figma design shows a complete Data Centers page with the following specifica
   - Inter Regular 14px, 21px line-height
 
 **Sample Data from Design:**
+
 1. New York | On-Premise | 192.168.1.0/24 | Main data center
-2. Los Angeles | Cloud | 10.0.0.0/16 | Cloud data center  
+2. Los Angeles | Cloud | 10.0.0.0/16 | Cloud data center
 3. Chicago | On-Premise | 172.16.0.0/20 | Secondary data center
 4. London | Cloud | 10.1.0.0/16 | International cloud data center
 5. Tokyo | On-Premise | 192.168.2.0/24 | Asia data center
@@ -80,11 +87,13 @@ The Figma design shows a complete Data Centers page with the following specifica
 ### TanStack Table (2025)
 
 **Installation:**
+
 ```bash
 npm install @tanstack/react-table
 ```
 
 **Key Features:**
+
 - Headless UI design (100% control over styling)
 - TypeScript-first approach with excellent type safety
 - Compatible with React 16.8+ through React 19
@@ -93,6 +102,7 @@ npm install @tanstack/react-table
 - Framework agnostic core
 
 **Best Practices:**
+
 - Use column definitions with proper TypeScript typing
 - Implement custom styling to match design systems
 - Leverage built-in state management for table interactions
@@ -101,21 +111,25 @@ npm install @tanstack/react-table
 ### TanStack Query (2025)
 
 **Installation:**
+
 ```bash
 npm install @tanstack/react-query
 ```
 
 **Features:**
+
 - Modern data fetching and caching solution
-- Compatible with React 18+ and ReactDOM/React Native  
+- Compatible with React 18+ and ReactDOM/React Native
 - Built-in loading states, error handling, and retry logic
 - Optimistic updates and background refetching
 - DevTools integration for debugging
 
 **Browser Compatibility:**
+
 - Chrome ≥ 91, Firefox ≥ 90, Safari ≥ 15, iOS ≥ 15
 
 **Recommended Add-on:**
+
 ```bash
 npm install -D @tanstack/eslint-plugin-query
 ```
@@ -123,11 +137,13 @@ npm install -D @tanstack/eslint-plugin-query
 ### Mock Service Worker (MSW) 2.x (2025)
 
 **Installation:**
+
 ```bash
 npm install msw --save-dev
 ```
 
 **Setup Requirements:**
+
 1. Generate service worker: `npx msw init ./public --save`
 2. Create handlers for API endpoints
 3. Set up browser worker for development
@@ -135,6 +151,7 @@ npm install msw --save-dev
 5. Conditional MSW enablement
 
 **Key Benefits:**
+
 - Network-level request interception (no fetch mocking)
 - Environment agnostic (browser, Node.js, Storybook)
 - Reusable handlers across development and testing
@@ -142,6 +159,7 @@ npm install msw --save-dev
 - No application code modification required
 
 **2025 Best Practices:**
+
 - MSW requires Node.js ≥ 18
 - Use `jest-fixed-jsdom` for Jest testing environments
 - Enable only in development/testing environments
@@ -152,6 +170,7 @@ npm install msw --save-dev
 ### Data Layer Design
 
 **TypeScript Interfaces:**
+
 ```typescript
 interface DataCenter {
   id: string;
@@ -172,15 +191,17 @@ interface CreateDataCenterRequest {
 ```
 
 **API Integration Pattern:**
+
 - `useDataCenters()` - Query hook for fetching data centers list
 - `useCreateDataCenter()` - Mutation hook for creating new data center
 - `useUpdateDataCenter()` - Mutation hook for updating data center
 - `useDeleteDataCenter()` - Mutation hook for deleting data center
 
 **MSW Handlers Structure:**
+
 ```typescript
 // GET /api/data-centers
-// POST /api/data-centers  
+// POST /api/data-centers
 // PUT /api/data-centers/:id
 // DELETE /api/data-centers/:id
 ```
@@ -188,6 +209,7 @@ interface CreateDataCenterRequest {
 ### Component Architecture
 
 **Page Structure:**
+
 ```
 DataCenters.tsx
 ├── PageHeader (with title and Add button)
@@ -199,6 +221,7 @@ DataCenters.tsx
 ```
 
 **Reusable Table Component Design:**
+
 ```
 DataTable.tsx (Generic, reusable component)
 ├── Generic TypeScript interfaces for flexibility
@@ -211,6 +234,7 @@ DataTable.tsx (Generic, reusable component)
 ```
 
 **State Management:**
+
 - TanStack Query handles server state (data fetching, caching, mutations)
 - TanStack Table handles UI state (sorting, pagination, selection)
 - Local React state for UI interactions (modals, forms)
@@ -222,7 +246,7 @@ DataTable.tsx (Generic, reusable component)
 
 1. **Install Required Packages**
    - `@tanstack/react-table`
-   - `@tanstack/react-query` 
+   - `@tanstack/react-query`
    - `@tanstack/eslint-plugin-query` (dev)
    - `msw` (dev dependency)
 
@@ -371,6 +395,7 @@ DataTable.tsx (Generic, reusable component)
 ## Technical Specifications
 
 ### File Structure
+
 ```
 src/
 ├── api/
@@ -384,7 +409,7 @@ src/
 │       └── ...                 # Existing UI components
 ├── mocks/
 │   ├── browser.ts              # MSW browser setup
-│   ├── server.ts               # MSW server setup  
+│   ├── server.ts               # MSW server setup
 │   └── handlers.ts             # API mock handlers
 ├── pages/
 │   ├── DataCenters.tsx         # Data Centers page (uses DataTable)
@@ -398,6 +423,7 @@ src/
 ```
 
 ### Dependencies to Install
+
 ```json
 {
   "dependencies": {
@@ -405,13 +431,14 @@ src/
     "@tanstack/react-query": "^5.x.x"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.x.x", 
+    "@tanstack/eslint-plugin-query": "^5.x.x",
     "msw": "^2.x.x"
   }
 }
 ```
 
 ### Environment Configuration
+
 - MSW enabled only in development and testing
 - TanStack Query DevTools enabled in development
 - Proper error boundaries in production
@@ -420,6 +447,7 @@ src/
 ## Reusable DataTable Component Benefits
 
 ### Design System Integration
+
 The DataTable component will serve as a foundational element of the DCMS design system, providing:
 
 1. **Consistency Across Pages**
@@ -446,6 +474,7 @@ The DataTable component will serve as a foundational element of the DCMS design 
    - Reduced development time for future table implementations
 
 ### Component API Design
+
 ```typescript
 // Example usage for different pages
 // Data Centers Page
@@ -457,7 +486,7 @@ The DataTable component will serve as a foundational element of the DCMS design 
   className="data-centers-table"
 />
 
-// Future Devices Page  
+// Future Devices Page
 <DataTable
   data={devices}
   columns={deviceColumns}
@@ -470,6 +499,7 @@ The DataTable component will serve as a foundational element of the DCMS design 
 ```
 
 ### Styling Flexibility
+
 - CSS custom properties allow per-page customization without component changes
 - Tailwind utility classes for quick styling adjustments
 - Support for different table sizes, densities, and visual treatments
@@ -507,11 +537,13 @@ The DataTable component will serve as a foundational element of the DCMS design 
 ## Risk Mitigation
 
 **Technical Risks:**
+
 - **MSW Setup Complexity**: Mitigated by following 2025 best practices and official documentation
 - **TanStack Integration**: Mitigated by using TypeScript and following established patterns
 - **Design Implementation**: Mitigated by pixel-perfect Figma analysis and systematic approach
 
 **Development Risks:**
+
 - **Breaking Changes**: Mitigated by comprehensive testing suite
 - **Performance Issues**: Mitigated by following React and TanStack best practices
 - **Accessibility Issues**: Mitigated by implementing proper ARIA attributes and testing
@@ -528,11 +560,11 @@ The DataTable component will serve as a foundational element of the DCMS design 
 
 - [GitHub Issue #5](https://github.com/erezcohen/react-vite1/issues/5)
 - [TanStack Table Documentation](https://tanstack.com/table/latest)
-- [TanStack Query Documentation](https://tanstack.com/query/latest) 
+- [TanStack Query Documentation](https://tanstack.com/query/latest)
 - [MSW Documentation](https://mswjs.io/docs/)
 - [Project CLAUDE.md Guidelines](/CLAUDE.md)
 - [Figma Design Analysis](generated from selected design components)
 
 ---
 
-*This research document serves as the foundation for implementing the Data Centers page feature in the DCMS application, ensuring modern architecture, excellent user experience, and maintainable code.*
+_This research document serves as the foundation for implementing the Data Centers page feature in the DCMS application, ensuring modern architecture, excellent user experience, and maintainable code._
