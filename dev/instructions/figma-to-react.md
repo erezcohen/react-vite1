@@ -217,5 +217,5 @@ When working with Figma designs, **ALWAYS** copy the actual assets and specifica
 
 ## Checking the UI and design implementation in the browser
 
-Assume that dev server is already running on http://localhost:5173/.
-Also, a chrome browser is already running and pointing to that address, with the BrowserTools MCP plugin working in it.
+For verifying the correctness of the application, you may start the dev server.
+You can assume a chrome browser is already running and pointing to the server on http://localhost:5173/, with the BrowserTools MCP plugin working in it.
