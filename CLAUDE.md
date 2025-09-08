@@ -128,6 +128,20 @@ Whenever adding new tests that require data from the backend to be mocked, use M
 - Structure files with exported components, subcomponents, helpers, static content, and types
 - Use lowercase with dashes for directory names (e.g., `components/auth-wizard`)
 
+### React 19 Optimization
+
+**Automatic Memoization**: React 19 includes the React Compiler that provides automatic optimization, eliminating the need for manual memoization in most cases. Follow these principles:
+
+- **Write simple, clean code first** - Let React Compiler handle optimization automatically
+- **Avoid manual `useMemo` and `useCallback`** unless dealing with specific edge cases:
+  - Third-party libraries requiring strict reference equality
+  - Extremely expensive calculations that need explicit memoization
+  - Legacy code that hasn't been migrated to React 19 patterns
+- **Trust the React Compiler** - It automatically optimizes function calls and values
+- **Focus on readable code** - The compiler handles performance concerns
+
+Reference: [React 19 Memoization Guide](https://dev.to/joodi/react-19-memoization-is-usememo-usecallback-no-longer-necessary-3ifn)
+
 ### Error Handling and Validation
 
 - Prioritize error handling and edge cases:
