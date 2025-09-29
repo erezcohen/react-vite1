@@ -151,3 +151,62 @@
 - ✅ `npm run test:run` passed successfully (105 tests passed)
 - ✅ `npm run dev` starts successfully and page loads correctly on http://localhost:5175/devices
 - ✅ Manual verification shows proper table display, status badges, data center lookup, and Add Device button
+
+## Step 8: E2E Tests Structure
+
+**Status**: ✅ Completed
+**Date**: 2025-09-17
+**Summary**: Created comprehensive end-to-end test structure for complete user workflows:
+
+- Set up `tests/devices.spec.ts` with proper Playwright imports and test structure
+- Created describe block for "Devices Page" with beforeEach setup for navigation
+- Added 9 placeholder test functions following established patterns:
+  - `should navigate to devices page from header`
+  - `should load devices page correctly with mock data`
+  - `should display all device data correctly in table`
+  - `should show Add Device button (visual only)`
+  - `should support column sorting functionality`
+  - `should show active navigation state when on devices page`
+  - `should handle responsive behavior`
+  - `should have proper accessibility features`
+  - `should handle error states gracefully`
+- All tests properly structured with TODO comments for Step 9 implementation
+- Test file follows existing data-centers.spec.ts patterns and conventions
+
+**Files Created**:
+
+- `tests/devices.spec.ts`
+
+**Validation**: ✅ `npx playwright test tests/devices.spec.ts --list` shows all 9 tests recognized properly
+
+## Step 9: E2E Tests Implementation
+
+**Status**: ✅ Completed
+**Date**: 2025-09-17
+**Summary**: Completed comprehensive end-to-end testing implementation:
+
+- Implemented all 9 test functions created in Step 8 following existing E2E test patterns
+- Added proper assertions for page navigation, routing, mock data display, table functionality, button presence, active navigation state, responsive behavior, and accessibility compliance
+- Fixed test assertions to match actual rendered content (lowercase status values: 'connected', 'disconnected')
+- Implemented error state handling with API route interception for robust testing
+- All tests follow established patterns from `data-centers.spec.ts` with proper wait conditions and assertions
+- Complete test coverage includes:
+  - Navigation flow from header links
+  - Page loading with mock device data verification  
+  - Table data display with specific device models, OS versions, status badges, and data center names
+  - Add Device button visibility and console interaction testing
+  - Column sorting functionality across multiple columns
+  - Active navigation state verification
+  - Responsive behavior testing across different viewport sizes
+  - Accessibility compliance with proper ARIA roles and semantic HTML
+  - Error state handling with API failure simulation
+
+**Files Modified**:
+
+- `tests/devices.spec.ts` (completed all test implementations)
+
+**Validation**:
+
+- ✅ `npm run test:e2e` passed successfully (42 tests passed including 9 new devices tests)
+- ✅ All devices page E2E tests pass individually and as part of full suite
+- ✅ No regressions in existing test suite

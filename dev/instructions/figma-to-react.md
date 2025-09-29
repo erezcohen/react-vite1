@@ -219,3 +219,19 @@ When working with Figma designs, **ALWAYS** copy the actual assets and specifica
 
 For verifying the correctness of the application, you may start the dev server.
 You can assume a chrome browser is already running and pointing to the server on http://localhost:5173/, with the BrowserTools MCP plugin working in it.
+
+## Verifying the quality
+
+Upon completion of the task, ALWAYS do the following:
+
+1. Run `npm run format` to format code with Prettier
+2. Run `npm run lint` to check code style (includes Prettier formatting check)
+3. Run `npm run typecheck` to verify TypeScript correctness
+4. Run `npm run test:run` and follow the appropriate rule:
+   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
+   b. If not in TDD mode: All tests should pass.
+5. Run `npm run test:e2e` and follow the appropriate rule:
+   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
+   b. If not in TDD mode: All tests should pass.
+6. Iterate on these steps as necessary.
+

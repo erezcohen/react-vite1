@@ -217,20 +217,6 @@ You can customize these settings in `.prettierrc.json`.
 
 5. **Finalization**: Ensure code meets all requirements, is secure, and is performant.
 
-## The Development Workflow
-
-1. Make code changes according to the plan
-2. Run `npm run format` to format code with Prettier
-3. Run `npm run lint` to check code style (includes Prettier formatting check)
-4. Run `npm run typecheck` to verify TypeScript correctness
-5. Run `npm run test:run` and follow the appropriate rule:
-   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
-   b. If not in TDD mode: All tests should pass.
-6. Run `npm run test:e2e` and follow the appropriate rule:
-   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
-   b. If not in TDD mode: All tests should pass.
-7. Iterate on these steps as necessary.
-
 ## Business Logic
 
 Currently the application is mostly a basic sample project.
