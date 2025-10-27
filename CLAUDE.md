@@ -49,7 +49,7 @@ This is a React + TypeScript + Vite starter template using shadcn/ui components 
 
 **Layout Components**: `app-header.tsx`, `app-footer.tsx`, `app-sidebar.tsx` provide application shell components.
 
-**Page Components**: Located in `src/pages/` - Feature pages that are routed to. Currently includes Dashboard and Sample pages.
+**Page Components**: Located in `src/pages/` - Feature pages that are routed to. Currently includes Data Centers and Sample pages.
 
 **Tables and Forms**: When adding new tables always use TanStack Table. When adding new forms always use TanStack Form.
 
@@ -128,6 +128,20 @@ Whenever adding new tests that require data from the backend to be mocked, use M
 - Structure files with exported components, subcomponents, helpers, static content, and types
 - Use lowercase with dashes for directory names (e.g., `components/auth-wizard`)
 
+### React 19 Optimization
+
+**Automatic Memoization**: React 19 includes the React Compiler that provides automatic optimization, eliminating the need for manual memoization in most cases. Follow these principles:
+
+- **Write simple, clean code first** - Let React Compiler handle optimization automatically
+- **Avoid manual `useMemo` and `useCallback`** unless dealing with specific edge cases:
+  - Third-party libraries requiring strict reference equality
+  - Extremely expensive calculations that need explicit memoization
+  - Legacy code that hasn't been migrated to React 19 patterns
+- **Trust the React Compiler** - It automatically optimizes function calls and values
+- **Focus on readable code** - The compiler handles performance concerns
+
+Reference: [React 19 Memoization Guide](https://dev.to/joodi/react-19-memoization-is-usememo-usecallback-no-longer-necessary-3ifn)
+
 ### Error Handling and Validation
 
 - Prioritize error handling and edge cases:
@@ -177,6 +191,10 @@ This project uses Prettier for code formatting integrated with ESLint. Prettier 
 
 You can customize these settings in `.prettierrc.json`.
 
+## Git Repository Information
+
+**Base Branch**: The main branch in this repository is named `master` (not `main`).
+
 ## Development Methodology
 
 ### Approach
@@ -198,20 +216,6 @@ You can customize these settings in `.prettierrc.json`.
 4. **Review and Optimize**: Perform code review, looking for areas of potential optimization and improvement.
 
 5. **Finalization**: Ensure code meets all requirements, is secure, and is performant.
-
-## The Development Workflow
-
-1. Make code changes according to the plan
-2. Run `npm run format` to format code with Prettier
-3. Run `npm run lint` to check code style (includes Prettier formatting check)
-4. Run `npm run typecheck` to verify TypeScript correctness
-5. Run `npm run test:run` and follow the appropriate rule:
-   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
-   b. If not in TDD mode: All tests should pass.
-6. Run `npm run test:e2e` and follow the appropriate rule:
-   a. If in TDD mode (test-driven development): All tests should pass except for tests that were modified or added for the upcoming change.
-   b. If not in TDD mode: All tests should pass.
-7. Iterate on these steps as necessary.
 
 ## Business Logic
 

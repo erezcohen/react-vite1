@@ -42,14 +42,14 @@ describe('AppHeader', () => {
     expect(header).toHaveClass('bg-background', 'border-b', 'border-[#e5e8eb]');
   });
 
-  test('renders home link', () => {
+  test('renders navigation links', () => {
     render(<AppHeader />);
 
-    // Look for link that goes to home page
-    const homeLinks = screen.getAllByRole('link');
-    expect(homeLinks.some((link) => link.getAttribute('href') === '/')).toBe(
-      true
-    );
+    // Look for navigation links based on menu config
+    expect(
+      screen.getByRole('link', { name: 'Data Centers' })
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Devices' })).toBeInTheDocument();
   });
 
   test('navigation links have correct styling for inactive state', () => {

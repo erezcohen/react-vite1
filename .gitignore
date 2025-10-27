@@ -36,3 +36,6 @@ coverage
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+#claude
+.mcp.local.json

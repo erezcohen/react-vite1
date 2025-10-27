@@ -1,10 +1,15 @@
+import { Link } from 'react-router-dom';
+
 // Local SVG assets (downloaded from Figma)
 const imgVector0 = '/assets/triangle-vector-0.svg';
 const imgVector1 = '/assets/triangle-vector-1.svg';
 
 export function AppLogo() {
   return (
-    <div className="flex items-center gap-4">
+    <Link
+      to="/data-centers"
+      className="flex items-center gap-4 hover:opacity-80 transition-opacity"
+    >
       <div className="relative size-4">
         <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-full overflow-clip relative w-4">
           {/* Vector 0 - First part of triangle icon */}
@@ -32,6 +37,6 @@ export function AppLogo() {
       <span className="font-['Inter:Bold',_sans-serif] font-bold text-[18px] leading-[23px] text-[#0d0f1c] text-nowrap">
         DCMS
       </span>
-    </div>
+    </Link>
   );
 }
